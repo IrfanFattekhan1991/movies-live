@@ -1,11 +1,32 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import Header from "./Header";
+import { validate } from "../utils/validate";
 
 const SignInSignUp = () => {
-  const [isSignedIn, setIsSignedIn] = useState(true);
+  const [isSignedIn, setIsSignedIn] = useState(false);
+  const [errorMessage, setErrorMessage] = useState(null);
+
+  const name = useRef(null);
+  const email = useRef(null);
+  const password = useRef(null);
+
   const loginHandler = () => {
     setIsSignedIn(!isSignedIn);
   };
+
+  const validateClickHandler = () => {
+    //console.log(name, email.current.value, password.current.value);
+
+    const message = validate(
+      name.current.value,
+      email.current.value,
+      password.current.value
+    );
+    setErrorMessage(message);
+
+    //console.log(message);
+  };
+
   return (
     <div>
       <Header />
@@ -15,21 +36,40 @@ const SignInSignUp = () => {
           alt="logo"
         />
       </div>
-      <form className="w-3/12 absolute p-12 bg-black text-white my-44 mx-auto right-0 left-0 rounded-lg bg-opacity-75">
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="w-3/12 absolute p-12 bg-black text-white my-44 mx-auto right-0 left-0 rounded-lg bg-opacity-80"
+      >
         <h1 className="font-bold text-4xl py-4">
           {isSignedIn ? "Sign Up" : "Sign In"}
         </h1>
+        {isSignedIn && (
+          <input
+            ref={name}
+            type="text"
+            placeholder="Enter Name"
+            className="p-4 my-6 w-full bg-gray-600"
+          />
+        )}
+
         <input
+          ref={email}
           type="email"
-          placeholder="Enter Email Address"
+          placeholder="Enter Email"
           className="p-4 my-6 w-full bg-gray-600"
         />
+
         <input
+          ref={password}
           type="password"
           placeholder="Enter Password"
           className="p-4 my-6 w-full bg-gray-600"
         />
-        <button className="p-4 my-6 bg-red-800 w-full rounded-md font-bold text-lg">
+        <p className="font-bold text-red-600">{errorMessage}</p>
+        <button
+          className="p-4 my-6 bg-red-800 w-full rounded-md font-bold text-lg"
+          onClick={validateClickHandler}
+        >
           {isSignedIn ? "Sign Up" : "Sign In"}
         </button>
         <h1 className="pt-4 text-lg cursor-pointer" onClick={loginHandler}>
