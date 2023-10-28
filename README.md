@@ -20,4 +20,8 @@
 - made an api call to TMDB api-Got the now playing movies
 - create a custom hook to make an api call
 - created a moviesSlice and inserted the movies data inside our store using dispatch
-- created MainContainer=>added VideoTitle component inside it.
+- created MainContainer
+  -added VideoTitle component inside it.
+  -added VideoBackground container inside it.
+  -made an api call to get the trailer video using id
+  -updated store with trailer video & embeded the movie trailer from youtube using key
