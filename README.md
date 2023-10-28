@@ -14,3 +14,10 @@
 - created redux store/slice
 - implemented sign out feature
 - update profile API call
+- BugFix:when logged in and going back to login page its allowing to go back without loging out.
+- BugFix: When i am not logged it and going to browse page its allowing me to go to browse page.
+- Unsubscribed to onAuthStateChanged api method.
+- made an api call to TMDB api-Got the now playing movies
+- create a custom hook to make an api call
+- created a moviesSlice and inserted the movies data inside our store using dispatch
+- created MainContainer=>added VideoTitle component inside it.
