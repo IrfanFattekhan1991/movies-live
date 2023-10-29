@@ -25,3 +25,4 @@
   -added VideoBackground container inside it.
   -made an api call to get the trailer video using id
   -updated store with trailer video & embeded the movie trailer from youtube using key
+- Implemented secondary container & added all the movies list in it by making api call
